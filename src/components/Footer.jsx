@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { motion } from 'framer-motion'
-import logo from '../assets/logo-malgapanna.webp'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -36,48 +35,25 @@ export default function Footer() {
   }, [])
 
   const socialLinks = [
-    { name: 'Facebook', href: 'https://facebook.com/malga.panna.5' },
-    { name: 'Instagram', href: 'https://instagram.com/malga_panna' },
-    { name: 'Twitter', href: 'https://twitter.com/pdonei' },
+    { name: 'Facebook', href: '#' },
+    { name: 'Instagram', href: '#' },
   ]
 
   return (
     <footer ref={footerRef} className="relative bg-[#050505]">
-      {/* Top border accent */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#c9a962]/30 to-transparent" />
 
-      {/* Main content */}
       <div className="relative px-8 md:px-16 lg:px-24 pt-32 md:pt-40 pb-20 md:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
           {/* Logo and brand */}
           <div className="lg:col-span-4 footer-element">
-            <img
-              src={logo}
-              alt="Malga Panna"
-              className="h-14 md:h-16 w-auto brightness-0 invert opacity-60 mb-10"
-            />
+            <span className="font-display text-3xl text-white mb-10 block">
+              Baita <span className="text-[#c9a962]">Paradiso</span>
+            </span>
             <p className="font-serif text-white/40 text-lg italic leading-relaxed max-w-sm mb-12">
-              Ristorante gourmet stellato Michelin nel cuore delle Dolomiti.
-              Una tradizione di famiglia dal 1900.
+              Ristorante e rifugio nel cuore delle Dolomiti.
+              Sapori autentici e vista mozzafiato.
             </p>
-            {/* Awards inline */}
-            <div className="flex items-center gap-10">
-              <div className="flex items-center gap-4">
-                <span className="text-[#c9a962] text-2xl">★</span>
-                <div>
-                  <span className="font-sans text-white/60 text-sm block">Michelin</span>
-                  <span className="font-sans text-white/30 text-[9px] tracking-wider">30 anni</span>
-                </div>
-              </div>
-              <div className="w-px h-12 bg-white/10" />
-              <div className="flex items-center gap-4">
-                <span className="font-display text-[#c9a962] text-xl tracking-wider">JRE</span>
-                <div>
-                  <span className="font-sans text-white/60 text-sm block">Jeunes</span>
-                  <span className="font-sans text-white/30 text-[9px] tracking-wider">Restaurateurs</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Navigation */}
@@ -86,13 +62,18 @@ export default function Footer() {
               Navigazione
             </span>
             <nav className="space-y-5">
-              {['Storia', 'Chef', 'Menu', 'Location', 'Contatti'].map((link) => (
+              {[
+                { label: 'La Baita', href: '#storia' },
+                { label: 'Ambienti', href: '#ambienti' },
+                { label: 'Menu', href: '#menu' },
+                { label: 'Contatti', href: '#contatti' },
+              ].map((link) => (
                 <a
-                  key={link}
-                  href={`#${link.toLowerCase()}`}
+                  key={link.label}
+                  href={link.href}
                   className="font-sans text-white/50 text-base tracking-wider hover:text-[#c9a962] transition-colors duration-500 block"
                 >
-                  {link}
+                  {link.label}
                 </a>
               ))}
             </nav>
@@ -106,22 +87,16 @@ export default function Footer() {
             <div className="space-y-8">
               <div>
                 <a
-                  href="tel:+390462573489"
-                  className="font-display text-4xl text-white hover:text-[#c9a962] transition-colors duration-500 block mb-3"
-                >
-                  0462 573489
-                </a>
-                <a
-                  href="mailto:info@malgapanna.it"
+                  href="mailto:info@baitaparadiso.it"
                   className="font-sans text-white/40 text-base hover:text-[#c9a962] transition-colors duration-500 block"
                 >
-                  info@malgapanna.it
+                  info@baitaparadiso.it
                 </a>
               </div>
               <div>
                 <span className="font-serif text-white/50 text-base italic leading-relaxed block">
-                  Strada de Sort 64<br />
-                  38035 Moena (TN)
+                  Dolomiti<br />
+                  Trentino Alto Adige
                 </span>
               </div>
             </div>
@@ -135,15 +110,15 @@ export default function Footer() {
             <div className="space-y-6">
               <div>
                 <span className="font-sans text-white/30 text-[9px] tracking-[0.3em] uppercase block mb-2">Pranzo</span>
-                <span className="font-serif text-white/60 text-lg">12:15 — 13:45</span>
+                <span className="font-serif text-white/60 text-lg">12:00 — 14:30</span>
               </div>
               <div>
                 <span className="font-sans text-white/30 text-[9px] tracking-[0.3em] uppercase block mb-2">Cena</span>
-                <span className="font-serif text-white/60 text-lg">19:30 — 22:00</span>
+                <span className="font-serif text-white/60 text-lg">19:00 — 22:00</span>
               </div>
             </div>
             <p className="font-sans text-white/20 text-sm mt-8">
-              Chiuso lun-mar pranzo
+              Aperto in stagione
             </p>
           </div>
         </div>
@@ -174,11 +149,11 @@ export default function Footer() {
       <div className="relative px-8 md:px-16 lg:px-24 py-10 border-t border-white/5">
         <div className="flex flex-wrap justify-between items-center gap-8">
           <span className="font-sans text-white/20 text-[11px] tracking-wider">
-            © {currentYear} Ristorante Malga Panna S.n.c. — Tutti i diritti riservati
+            © {currentYear} Baita Paradiso — Tutti i diritti riservati
           </span>
 
           <div className="flex gap-10">
-            {['Privacy Policy', 'Cookie Policy', 'Impressum'].map((link) => (
+            {['Privacy Policy', 'Cookie Policy'].map((link) => (
               <a
                 key={link}
                 href="#"
@@ -194,7 +169,7 @@ export default function Footer() {
       {/* Decorative large text */}
       <div className="absolute bottom-0 right-0 overflow-hidden pointer-events-none hidden lg:block">
         <span className="font-display text-[30vw] text-white/[0.015] leading-none block translate-x-[15%] translate-y-[35%]">
-          MP
+          BP
         </span>
       </div>
     </footer>

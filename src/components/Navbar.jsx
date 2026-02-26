@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import gsap from 'gsap'
-import logo from '../assets/logo-malgapanna.webp'
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -49,10 +48,9 @@ export default function Navbar() {
   }, [isOpen])
 
   const navLinks = [
-    { href: '#storia', label: 'Storia', subtitle: 'Dal 1900' },
-    { href: '#chef', label: 'Chef', subtitle: 'Paolo Donei' },
-    { href: '#menu', label: 'Menu', subtitle: 'Degustazione' },
-    { href: '#location', label: 'Location', subtitle: '1400m' },
+    { href: '#storia', label: 'La Baita', subtitle: 'La nostra storia' },
+    { href: '#ambienti', label: 'Ambienti', subtitle: 'Sala & Terrazza' },
+    { href: '#menu', label: 'Menu', subtitle: 'I nostri piatti' },
     { href: '#contatti', label: 'Contatti', subtitle: 'Prenotazioni' },
   ]
 
@@ -69,15 +67,13 @@ export default function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between px-8 md:px-16 lg:px-24">
-          {/* Logo */}
+          {/* Logo testuale */}
           <a href="#" className="relative z-50">
-            <img
-              src={logo}
-              alt="Malga Panna"
-              className={`w-auto transition-all duration-500 brightness-0 invert ${
-                isScrolled ? 'h-8' : 'h-10 md:h-12'
-              }`}
-            />
+            <span className={`font-display text-white transition-all duration-500 ${
+              isScrolled ? 'text-xl' : 'text-2xl md:text-3xl'
+            }`}>
+              Baita <span className="text-[#c9a962]">Paradiso</span>
+            </span>
           </a>
 
           {/* Desktop nav */}
@@ -108,7 +104,7 @@ export default function Navbar() {
             className="hidden lg:flex items-center gap-3 group"
           >
             <span className="text-[#c9a962] text-[10px] font-sans tracking-[0.4em] uppercase">
-              Riserva
+              Prenota
             </span>
             <span className="w-8 h-px bg-[#c9a962]/50 group-hover:w-12 group-hover:bg-[#c9a962] transition-all duration-500" />
           </motion.a>
@@ -139,15 +135,13 @@ export default function Navbar() {
             transition={{ duration: 0.6 }}
             className="fixed inset-0 z-40 bg-[#0a0a0a] flex flex-col"
           >
-            {/* Background pattern */}
             <div className="absolute inset-0 opacity-[0.02]">
               <div className="absolute top-1/4 right-1/4 w-96 h-96 border border-white/20 rounded-full" />
               <div className="absolute bottom-1/4 left-1/4 w-64 h-64 border border-white/10 rounded-full" />
             </div>
 
-            {/* Main nav */}
             <nav className="flex-1 flex flex-col justify-center px-8 md:px-16" style={{ perspective: '1000px' }}>
-              {navLinks.map((link, i) => (
+              {navLinks.map((link) => (
                 <div key={link.href} className="overflow-hidden border-b border-white/5 py-4">
                   <a
                     href={link.href}
@@ -166,15 +160,14 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Bottom info */}
             <div className="px-8 md:px-16 py-12 border-t border-white/5">
               <div className="flex flex-wrap justify-between items-end gap-8">
                 <div className="menu-detail" style={{ opacity: 0 }}>
                   <span className="font-sans text-white/30 text-[9px] tracking-[0.4em] uppercase block mb-3">
-                    Indirizzo
+                    Dove siamo
                   </span>
                   <span className="font-serif text-white/60 text-base italic">
-                    Strada de Sort 64, Moena
+                    Dolomiti, Trentino Alto Adige
                   </span>
                 </div>
 
@@ -182,9 +175,9 @@ export default function Navbar() {
                   <span className="font-sans text-white/30 text-[9px] tracking-[0.4em] uppercase block mb-3">
                     Telefono
                   </span>
-                  <a href="tel:+390462573489" className="font-display text-white text-xl hover:text-[#c9a962] transition-colors duration-300">
-                    0462 573489
-                  </a>
+                  <span className="font-display text-white text-xl">
+                    Baita Paradiso
+                  </span>
                 </div>
 
                 <a
@@ -199,11 +192,6 @@ export default function Navbar() {
                   <span className="w-8 h-px bg-[#c9a962]/50 group-hover:w-16 group-hover:bg-[#c9a962] transition-all duration-500" />
                 </a>
               </div>
-            </div>
-
-            {/* Decorative star */}
-            <div className="absolute top-16 right-8 md:right-16">
-              <span className="text-[#c9a962]/30 text-4xl">★</span>
             </div>
           </motion.div>
         )}

@@ -7,7 +7,6 @@ import Hero from './components/Hero'
 import Storia from './components/Storia'
 import Chef from './components/Chef'
 import Menu from './components/Menu'
-import Location from './components/Location'
 import Contatti from './components/Contatti'
 import Footer from './components/Footer'
 
@@ -50,7 +49,6 @@ function App() {
         <Storia />
         <Chef />
         <Menu />
-        <Location />
         <Contatti />
       </main>
       <Footer />
